@@ -1,4 +1,4 @@
 #!/bin/bash
 # Compilation Script
 
-gcc printMessageMultipleTimes.c -o printMessageMultipleTimes -lpthread
+gcc globalCounter.c -o globalCounter -lpthread
