@@ -1,4 +1,4 @@
 #!/bin/bash
 # Compilation Script
 
-gcc globalCounter.c -o globalCounter -lpthread
+gcc sharedVariable.c -o sharedVariable -lpthread

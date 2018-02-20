@@ -11,14 +11,15 @@ typedef struct thread_data{
 }myData;
 
 //my thread function
-void *printMess(void * structure){
+int printMess(void * structure){
 	//recieving a pointer to struct containing data, type casting it to correct form and storing it in a new ptr
 	myData* data = (myData *) structure;
 	//use '->' operator to retrieve data from pointer
 	for(int i = 0; i < data -> no_times; i++){
 		printf("From inside the created thread: %s\n", data -> mess);
 	}
-	pthread_exit(NULL);
+	//pthread_exit(NULL);
+    return 5;
 }
 
 int main(void){
@@ -48,7 +49,7 @@ int main(void){
 	strcpy(myDataPtr -> mess,message);
 
 	//creating the thread
-	returnVal = pthread_create(&myThread, NULL, printMess, (void *) myDataPtr);
+	returnVal = pthread_create(&myThread, NULL, (void*)printMess, (void *) myDataPtr);
 
 	//check if some error occurred
 	if(returnVal == 0){
