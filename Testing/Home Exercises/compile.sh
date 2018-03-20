@@ -1,4 +1,4 @@
 #!/bin/bash
 # Compilation Script
 
-gcc gccIntrinsicIntro.c -o gccIntrinsicIntro -lpthread
+gcc Semaphore.c -o Semaphore -lpthread
