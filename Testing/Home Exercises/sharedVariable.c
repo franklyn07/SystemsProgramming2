@@ -5,7 +5,7 @@
 #include <pthread.h>
 
 //enables mutex to lock variable for a specific thread
-pthread_mutex_t lock;
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
 //my thread function
 void *increment(void * arg){
@@ -50,6 +50,8 @@ int main(void){
 	}
 	
 	printf("Counter: %lu\n",counter );
+
+	pthread_mutex_destroy(&lock);
 
 	return 0;
 }
