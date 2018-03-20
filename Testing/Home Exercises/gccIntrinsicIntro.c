@@ -10,15 +10,16 @@ int lock = 0;
 void *increment(void * arg){
 	int64_t* counter = (int64_t*) arg;
 	//this loop will loop infinitely untill a 0 is returned.
-	//Note that it returns the previous value that lock contained, and sets the new value of lock to 1
+	//Note that sync_lock func returns the previous value that lock contained, and sets the new value of lock to 1
 	while(__sync_lock_test_and_set(&lock,1));
+	//then it will go in the critical section
 	for(int i =	0;	i <	100000;	i++){
 		(*counter)++;
 		if	((*counter)	%	1000	==	0)	{
 			printf("another	1000\n");
 		}
 	}
-	//this line will release lock and make it 0 again.
+	//this line will release lock and make lock 0 again.
 	__sync_lock_release(&lock);
 	printf("Thread Finished!\n");
 	pthread_exit(NULL);
