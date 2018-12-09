@@ -15,7 +15,7 @@ typedef struct thread_data{
 void *MyThread(void *arg){
 	thread_data_t *data;
 	data = (thread_data_t *)arg;
-	printf("From insid ethe created thread: %ld %s\n", data->threadid, data ->message);
+	printf("From inside the created thread: %ld %s\n", data->threadid, data ->message);
 	pthread_exit(NULL);
 }
 
